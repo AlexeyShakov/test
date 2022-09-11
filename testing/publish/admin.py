@@ -5,6 +5,7 @@ from .models import Post
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    pass
+    # This field automatically adds slug to "slug" field
+    prepopulated_fields = {'slug': ('title',)}
 
 

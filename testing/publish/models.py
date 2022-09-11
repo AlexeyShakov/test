@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 
+
 # https://code.tutsplus.com/ru/tutorials/using-celery-with-django-for-background-task-processing--cms-28732
 class Post(models.Model):
     # get_user_model gets the currents user. So if a user has signed in we can get him/her by using get_user_model()
