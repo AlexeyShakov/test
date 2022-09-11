@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from publish.views import PostViewSet
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'api/v1/post', PostViewSet)
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+urlpatterns += router.urls

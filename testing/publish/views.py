@@ -1,15 +1,13 @@
-from django.http import Http404
-from django.shortcuts import render
+from rest_framework import viewsets
 from .models import Post
+from .serializers import PostSerializer
 
 
-def view_post(request, slug):
-    try:
-        post = Post.objects.get(slug=slug)
-    except Post.DoesNotExist:
-        raise Http404("Poll does not exist")
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
-    return render(request, 'post.html', context={'post': post})
+
 
 
 
