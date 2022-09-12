@@ -31,7 +31,7 @@ class UserAccountManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
-    USERNAME_FIELD = 'email' # USERNAME_FIELD means that authentication will require this field(email)
+    USERNAME_FIELD = 'email'  # USERNAME_FIELD means that authentication will require this field(email)
 
     # We have to define it, the documentation says so
     objects = UserAccountManager()
