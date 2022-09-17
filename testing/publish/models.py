@@ -13,3 +13,41 @@ class Post(models.Model):
  
     def __str__(self):
         return '"%s" by %s' % (self.title, self.author)
+
+
+# class Cat(models.Model):
+#     cat_big = models.CharField(max_length=300)
+#     cat_small = models.CharField(max_length=300)
+#     same_line = models.CharField(max_length=300)
+#
+#
+# class Dog(models.Model):
+#     dog_big = models.CharField(max_length=300)
+#     dog_small = models.CharField(max_length=300)
+#     same_line = models.CharField(max_length=300)
+#
+#
+# class CatDog(models.Model):
+#     cat = models.ForeignKey(to=Cat, on_delete=models.CASCADE)
+#     dog = models.ForeignKey(to=Dog, on_delete=models.CASCADE)
+
+
+class Album(models.Model):
+    album_name = models.CharField(max_length=100)
+    artist = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.album_name
+
+class Track(models.Model):
+    album = models.ForeignKey(Album, related_name='tracks', on_delete=models.CASCADE)
+    order = models.IntegerField()
+    title = models.CharField(max_length=100)
+    duration = models.IntegerField()
+
+    class Meta:
+        unique_together = ['album', 'order']
+        ordering = ['order']
+
+    def __str__(self):
+        return '%d: %s' % (self.order, self.title)

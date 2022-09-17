@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'main',
     'publish',
+    'drf_multiple_model',
     
 ]
 

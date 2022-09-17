@@ -17,14 +17,21 @@ from django.contrib import admin
 from django.urls import path
 from publish.views import PostViewSet
 from rest_framework.routers import DefaultRouter
+# from publish.views import Dog_cat_view_api
+# from publish.views import CatDogView
+from publish.views import AlbumView
+
 
 router = DefaultRouter()
 router.register(r'api/v1/post', PostViewSet)
+# router.register(r'api/v1/cat_dog', CatDogView)
+router.register(r'api/v1/cat_dog', AlbumView)
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('cat_dog_api/', Dog_cat_view_api.as_view(), name="cat_dog_api"),
 ]
 
 urlpatterns += router.urls
