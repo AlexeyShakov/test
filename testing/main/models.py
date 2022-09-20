@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+import uuid
 
 
 class UserAccountManager(BaseUserManager):
@@ -40,6 +41,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     full_name = models.CharField('full name', blank=True, null=True, max_length=400)
     is_staff = models.BooleanField('staff status', default=False)
     is_active = models.BooleanField('active', default=True)
+    is_verified = models.BooleanField('verified', default=False) # Add the `is_verified` flag
+    verification_uuid = models.UUIDField('Unique Verification UUID', default=uuid.uuid4)
 
     def get_short_name(self):
         return self.email

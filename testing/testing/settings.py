@@ -127,3 +127,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # It tells what default user model to use
 AUTH_USER_MODEL = 'main.User'
+
+# CELERY SETTINGS
+CELERY_TIMEZONE = "Europe/Moscow"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ivanryazan96@gmail.com'
+EMAIL_HOST_PASSWORD = 'yruytxqixhbzooxs'
+EMAIL_PORT = 587

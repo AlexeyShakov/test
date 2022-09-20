@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from .serializers import AlbumSerializer
 from .models import Album
+from django.http import Http404
 
 
 class PostViewSet(viewsets.ModelViewSet):
