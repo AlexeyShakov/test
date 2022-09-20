@@ -1,20 +1,15 @@
 # Create your tasks here
+from testing.celery import app
+from publish.models import TestSignals
+from django.core.mail import send_mail 
+from testing.settings import EMAIL_HOST_USER
 
-
-from celery import shared_task
-
-
-@shared_task
-def add(x, y):
-    return x + y
-
-
-@shared_task
-def mul(x, y):
-    return x * y
-
-
-@shared_task
-def xsum(numbers):
-    return sum(numbers)
+@app.task
+def send_email():
+    send_mail(
+    "Тема сообщения",
+    "Вы получили это сообщение, потому что модель TestSignals была сохранена",
+    EMAIL_HOST_USER,
+    ['alexei_96@inbox.ru']
+    )
 

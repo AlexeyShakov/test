@@ -2,8 +2,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from publish.models import TestSignals
 from datetime import datetime
-from django.core.mail import send_mail
-from testing.settings import EMAIL_HOST_USER
+from .tasks import send_email
 
 
 @receiver(post_save, sender=TestSignals)
@@ -11,9 +10,5 @@ def post_save_date(sender, instance, created, **kwargs):
     # instance.previous_date = instance.date
     # instance.date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     sender.objects.filter(id=instance.id).update(previous_date=instance.date, date=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    send_mail(
-        "Тема сообщения",
-        "Вы получили это сообщение, потому что модель TestSignals была сохранена",
-        EMAIL_HOST_USER,
-        ['alexei_96@inbox.ru']
-    )
+    send_email.delay()
+    
