@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from publish.views import PostViewSet
+from publish.views import PostViewSet, TestSignalsView
 from rest_framework.routers import DefaultRouter
 # from publish.views import Dog_cat_view_api
 # from publish.views import CatDogView
@@ -26,7 +26,7 @@ router = DefaultRouter()
 router.register(r'api/v1/post', PostViewSet)
 # router.register(r'api/v1/cat_dog', CatDogView)
 router.register(r'api/v1/cat_dog', AlbumView)
-
+router.register(r'signals', TestSignalsView)
 
 
 urlpatterns = [

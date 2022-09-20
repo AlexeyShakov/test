@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Post
+from .models import Post, TestSignals
 from .models import Track, Album
 
 
@@ -87,3 +87,10 @@ class AlbumSerializer(serializers.ModelSerializer):
 
 
         return instance
+
+
+class TestSignalsSerialiser(serializers.ModelSerializer):
+    class Meta:
+        model = TestSignals
+        fields = serializers.ALL_FIELDS
+        

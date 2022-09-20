@@ -1,9 +1,8 @@
 from rest_framework import viewsets
-from .models import Post
-from .serializers import PostSerializer
+from .models import Post, TestSignals
+from .serializers import PostSerializer, TestSignalsSerialiser
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from drf_multiple_model.views import FlatMultipleModelAPIView, ObjectMultipleModelAPIView
 from .serializers import AlbumSerializer
 from .models import Album
 
@@ -36,4 +35,10 @@ class PostViewSet(viewsets.ModelViewSet):
 class AlbumView(viewsets.ModelViewSet):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
+
+
+class TestSignalsView(viewsets.ModelViewSet):
+    queryset = TestSignals.objects.all()
+    serializer_class = TestSignalsSerialiser
+
 

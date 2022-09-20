@@ -51,3 +51,15 @@ class Track(models.Model):
 
     def __str__(self):
         return '%d: %s' % (self.order, self.title)
+
+
+
+class TestSignals(models.Model):
+    name = models.CharField(max_length=50)
+    date = models.DateTimeField(blank=True, null=True)
+    previous_date = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Сигнал с именем {self.name}"
+
+
